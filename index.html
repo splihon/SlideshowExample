@@ -5,8 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Example Cinematic</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.js" integrity="sha512-H05oT7BAjM9Ai1IaFX9zr61NtE2e1P0MkTz3AZXBnseaJSAOt2FGMFJ+vVGutaJxEGA1jxUiYsTBYQNE08/Erw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        class Intro extends Phaser.Scene {
+            constructor() {
+                super('intro');
+            }
+            create() {
+                this.add.text(10,10,"Introduction Loading. Click to begin.");
+                this.input.on('pointerdown', () => this.scene.start('Logo'));
+            }
+
+        }
+
+        class Logo extends Phaser.Scene {
+            constructor() {
+                super('logo');
+            }
+            create(){
+                this.input.on('pointerdown', () => this.scene.start('Homepage'));
+
+            }
+
+        }
+
+        class Homepage extends Phaser.Scene{
+            constructor() {
+                super('homepage');
+            }
+            create(){
+                this.input.on('pointerdown', () => this.scene.start('Storyintro'));
+
+            }
+
+        }
+
+        class Storyintro extends Phaser.Scene{
+            constructor() {
+                super('storyintro');
+            }
+            create(){
+                this.input.on('pointerdown', () => this.scene.start('Outro'));
+
+            }
+
+        }
+
+        class Outro extends Phaser.Scene{
+            constructor() {
+                super('outro');
+            }
+
+        }
+
+        new Phaser.Game({
+           width: 640,
+           height: 480,
+           scene: [Intro, Logo, Homepage, Storyintro, Outro],
+        });
+
+    </script>
 </head>
 <body>
     
 </body>
 </html>
+
