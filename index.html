@@ -12,7 +12,8 @@
                 super('intro');
             }
             create() {
-                this.add.text(10,10,"Introduction Loading. Click to begin.");
+                this.add.text(10,10,"Introduction Loading. . .");
+                this.add.text(20,10,"Click to Begin.");
                 this.input.on('pointerdown', () => this.scene.start('Logo'));
             }
 
@@ -23,6 +24,18 @@
                 super('logo');
             }
             create(){
+                let thing = this.add.circle(320,210,180,0xff9116)
+                  //movement/opacity change to circle
+                //this.add.tween({
+                    //targets: thing,
+                    //?? opacity and duration to be added? etc.
+                //});
+                
+                //fade out at the end of the slide
+
+                this.time.delayedCall (2000, () => {
+                    this.camera.main.fadeOut(2000,255,0,0); //not working (screen presented as black) [numbers are currently for red/change to black]
+                });
                 this.input.on('pointerdown', () => this.scene.start('Homepage'));
 
             }
