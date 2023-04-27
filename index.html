@@ -13,7 +13,7 @@
             }
             create() {
                 this.add.text(10,10,"Introduction Loading. . .");
-                this.add.text(20,10,"Click to Begin.");
+                this.add.text(30,30,"Click to Begin.");
                 this.input.on('pointerdown', () => this.scene.start('Logo'));
             }
 
@@ -23,41 +23,69 @@
             constructor() {
                 super('logo');
             }
-            create(){
-                let thing = this.add.circle(320,210,180,0xff9116)
-                  //movement/opacity change to circle
-                //this.add.tween({
-                    //targets: thing,
-                    //?? opacity and duration to be added? etc.
-                //});
-                
-                //fade out at the end of the slide
 
+            preload(){
+                this.load.path = './assets/';
+                this.load.image('logoImage', 'logoImage.png');
+            }
+            create(){
+                let orangeCircle = this.add.circle(320,210,180,0xff9116);
+                this.add.text(330, 420, "Dood", {fontFamily: 'Comforter', fontSize: '60px', color: '#00f'}).setOrigin(0.5);
+                this.add.text(210, 420, "The", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
+                this.add.text(460, 420, "Studio", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
+                let logoImage = this.add.image(320,210, 'logoImage').setScale(0.2);
+                logoImage.depth = 1;
+            
                 this.time.delayedCall (2000, () => {
-                    this.camera.main.fadeOut(2000,255,0,0); //not working (screen presented as black) [numbers are currently for red/change to black]
+                    this.cameras.main.fadeOut(2000, 0, 0, 0); //not working (screen presented as black) [numbers are currently for red/change to black]
                 });
                 this.input.on('pointerdown', () => this.scene.start('Homepage'));
-
-            }
-
-        }
+                };
+           }
+            
 
         class Homepage extends Phaser.Scene{
             constructor() {
                 super('homepage');
             }
-            create(){
+            create() {
+                this.add.text(330, 420, "Dood", {fontFamily: 'Comforter', fontSize: '60px', color: '#00f'}).setOrigin(0.5);
+                this.graphics = this.add.graphics();
+                this.graphic.fillTriangle(250, 50, 200, 150, 300, 150);
+                //this.add.rectangle(320,210,180,0xff9116);
                 this.input.on('pointerdown', () => this.scene.start('Storyintro'));
-
             }
 
+        }
+
+        class Preload extends Phaser.Scene{
+            constructor(){
+                super('preload');
+            }
+            preload(){
+                this.load.image('forest 2', 'assets/forest 2.jpg');
+            }
+            create(){
+                this.scene.start('Intro');
+            }
         }
 
         class Storyintro extends Phaser.Scene{
             constructor() {
                 super('storyintro');
             }
+            preload(){
+                this.load.path = './assets/';
+                this.load.image('forest 2', 'forest 2.png');
+            }
             create(){
+                //let forest2 = this.add.image(320,210, 'forest 2').setScale(5);
+                //forest2.depth = 1;
+                this.add.image(0, 0, 'forest 2').setOrigin(0, 0);
+                this.add.text(330, 120, "A world ruled by dogs. . .", {fontFamily: 'Arial', fontSize: '20px', color: '#ffffff'}).setOrigin(0.5);
+                this.add.text(330, 220, "Can you picture it?", {fontFamily: 'Arial', fontSize: '20px', color: '#ffffff'}).setOrigin(0.5);
+                this.add.text(330, 320, "No?! Well then come explore it for yourself.", {fontFamily: 'Arial', fontSize: '20px', color: '#ffffff'}).setOrigin(0.5);
+
                 this.input.on('pointerdown', () => this.scene.start('Outro'));
 
             }
@@ -74,7 +102,7 @@
         new Phaser.Game({
            width: 640,
            height: 480,
-           scene: [Intro, Logo, Homepage, Storyintro, Outro],
+           scene: [Storyintro, Intro, Logo, Homepage, Outro],
         });
 
     </script>
