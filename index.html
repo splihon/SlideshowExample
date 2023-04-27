@@ -29,14 +29,74 @@
                 this.load.image('logoImage', 'logoImage.png');
             }
             create(){
-                let orangeCircle = this.add.circle(320,210,180,0xff9116);
-                this.add.text(330, 420, "Dood", {fontFamily: 'Comforter', fontSize: '60px', color: '#00f'}).setOrigin(0.5);
-                this.add.text(210, 420, "The", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
-                this.add.text(460, 420, "Studio", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
-                let logoImage = this.add.image(320,210, 'logoImage').setScale(0.2);
-                logoImage.depth = 1;
+                let orangeCircle = this.add.circle(320,210,100,0xff9116);
+                let logoImage = this.add.image(320,210, 'logoImage').setScale(0.50);
+                let text = this.add.text(330, 420, "Dood", {fontFamily: 'Comforter', fontSize: '60px', color: '#00f'}).setOrigin(0.5);
+                let text2 = this.add.text(210, 420, "The", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
+                let text3 = this.add.text(460, 420, "Studio", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
             
-                this.time.delayedCall (2000, () => {
+                 //attempt to scale and grown size of circle
+                 this.tweens.add({
+                    targets: orangeCircle,
+                    duration: 3000,
+                    scaleX: 5,
+                    scaleY: 5,
+                    ease: 'Linear',
+                    onComplete: () => orangeCircle.setFillStyle(0xff9116)
+                });
+
+                //attempt to move text off screen
+                this.tweens.add({
+                    targets: text,
+                    duration: 1200,
+                    y: -40,
+                    ease: 'Linear',
+                    delay: 1500
+                });
+
+                //attempt to move text off screen
+                this.tweens.add({
+                    targets: text2,
+                    duration: 1200,
+                    x: -40,
+                    ease: 'Linear',
+                    delay: 1500
+                });
+
+                //attempt to move text off screen
+                this.tweens.add({
+                    targets: text3,
+                    duration: 1200,
+                    x: 800,
+                    ease: 'Linear',
+                    delay: 1500
+                });
+
+                //reduce scale of logoImage 
+                this.tweens.add({
+                    targets: logoImage,
+                    duration: 1600,
+                    scale: 0.01,
+                    ease: 'Linear',
+                    delay: 1600
+                });
+
+                //grow in scale after reduction
+                this.tweens.add({
+                        targets: logoImage,
+                        duration: 1300,
+                        scale: 0.5,
+                        ease: 'Linear',
+                        delay: 2700
+                    });
+
+                orangeCircle.depth = 1;
+                logoImage.depth = 1;
+                text.depth = 2;
+                text2.depth = 2;
+                text3.depth = 2;
+
+                this.time.delayedCall (2500, () => {
                     this.cameras.main.fadeOut(2000, 0, 0, 0); //not working (screen presented as black) [numbers are currently for red/change to black]
                 });
                 this.input.on('pointerdown', () => this.scene.start('Homepage'));
@@ -89,6 +149,11 @@
                     delay: 0
                 });
                 forest.depth = 1;
+
+                //attempt to fade out screen (will maybe look into using a different transition or do i want them all the same?)
+                this.time.delayedCall (4000, () => {
+                    this.cameras.main.fadeOut(2000, 0, 0, 0); //not working (screen presented as black) [numbers are currently for red/change to black]
+                });
 
                 //this.add.text(210, 210, "Play\nOptions\nCredits\nQuit", {fontFamily: 'Arial', fontSize: '40px', color: '#ffffff'}).setOrigin(0.5);
                 
@@ -158,7 +223,7 @@
         new Phaser.Game({
            width: 640,
            height: 480,
-           scene: [Homepage, Intro, Logo, Storyintro, Outro],
+           scene: [Logo, Intro, Homepage, Storyintro, Outro],
         });
 
     </script>
