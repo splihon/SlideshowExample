@@ -36,7 +36,7 @@
                 let text2 = this.add.text(210, 420, "The", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
                 let text3 = this.add.text(460, 420, "Studio", {fontFamily: 'Quicksand', fontSize: '40px', color: '#008080'}).setOrigin(0.5);
             
-                 //attempt to scale and grown size of circle
+                 //scale and grow size of circle
                  this.tweens.add({
                     targets: orangeCircle,
                     duration: 3000,
@@ -46,7 +46,7 @@
                     onComplete: () => orangeCircle.setFillStyle(0xff9116)
                 });
 
-                //attempt to move text off screen
+                //move text off screen
                 this.tweens.add({
                     targets: text,
                     duration: 1200,
@@ -55,7 +55,7 @@
                     delay: 1500
                 });
 
-                //attempt to move text off screen
+                //move text off screen
                 this.tweens.add({
                     targets: text2,
                     duration: 1200,
@@ -64,7 +64,7 @@
                     delay: 1500
                 });
 
-                //attempt to move text off screen
+                //move text off screen
                 this.tweens.add({
                     targets: text3,
                     duration: 1200,
@@ -99,7 +99,7 @@
                 text3.depth = 2;
 
                 this.time.delayedCall (2500, () => {
-                    this.cameras.main.fadeOut(2000, 0, 0, 0); //not working (screen presented as black) [numbers are currently for red/change to black]
+                    this.cameras.main.fadeOut(2000, 0, 0, 0);
                 });
                 this.input.on('pointerdown', () => this.scene.start('homepage'));
 
@@ -118,23 +118,22 @@
             }
 
             create() {
-                this.add.text(110,5, "Click to Continue.", {fontFamily: 'Arial', fontSize: '20px', color: '#ffffff'});//.setOrigin(0.5);
+                this.add.text(110,5, "Click to Continue.", {fontFamily: 'Arial', fontSize: '20px', color: '#ffffff'});
                 this.graphics = this.add.graphics();
                 let blueCircle = this.add.circle(190,210,60,0x0000ff);
                 let text = this.add.text(-200, 210, "Play\nOptions\nCredits\nQuit", {fontFamily: 'Arial', fontSize: '40px', color: '#ffffff'}).setOrigin(0.5);
 
-                //attempt to scale and grown size of circle
+                //scale and grow size of circle
                 this.tweens.add({
                     targets: blueCircle,
                     duration: 2000,
                     scaleX: 3,
                     scaleY: 3,
-                    //radius: 160,
                     ease: 'Linear',
                     onComplete: () => blueCircle.setFillStyle(0x0000ff)
                 });
                 
-                //attempt to move text onto circle
+                //move text onto circle
                 this.tweens.add({
                     targets: text,
                     duration: 1000,
@@ -143,7 +142,7 @@
                     delay: 2000
                 });
 
-                //attempt to move image onto screen fromthe right
+                //move image onto screen fromthe right
                 let forest =  this.add.image(800,240, 'forest').setScale(0.5);
                 this.tweens.add({
                     targets: forest,
@@ -154,15 +153,10 @@
                 });
                 forest.depth = 1;
 
-                //attempt to fade out screen (will maybe look into using a different transition or do i want them all the same?)
+                //fade out screen
                 this.time.delayedCall (4000, () => {
-                    this.cameras.main.fadeOut(2000, 0, 0, 0); //not working (screen presented as black) [numbers are currently for red/change to black]
+                    this.cameras.main.fadeOut(2000, 0, 0, 0);
                 });
-
-                //this.add.text(210, 210, "Play\nOptions\nCredits\nQuit", {fontFamily: 'Arial', fontSize: '40px', color: '#ffffff'}).setOrigin(0.5);
-                
-                //let forest = this.add.image(520,240, 'forest').setScale(0.5);
-                //forest.depth = 1;
 
                 this.input.on('pointerdown', () => this.scene.start('storyintro'));
             }
@@ -179,12 +173,6 @@
             create(){
                 this.scene.start('Intro');
             }
-            //preload(){
-               // this.load.path = './assets/';
-               // this.load.image('ball', 'ball.png');
-                //this.load.path = './assets/';
-                //this.load.image('bird', 'bird.png');
-           // }
         }
 
         class Storyintro extends Phaser.Scene{
@@ -201,8 +189,6 @@
 
             }
             create(){
-                //let background = this.add.image(320,210, 'background').setScale(5);
-                //background.depth = 1;
                 this.add.image(0, 0, 'background').setOrigin(0, 0);
                 this.add.text(300,10,"Click to Continue.",{fontFamily: 'Arial', fontSize: '20px', color: '#000000'}).setOrigin(0.5);
                 let texta = this.add.text(430, 220, "A world ruled by dogs. . .", {fontFamily: 'Arial', fontSize: '20px', color: '#000000'}).setOrigin(0.5);
@@ -219,19 +205,9 @@
                 let bird = this.add.image(-100,-100, 'bird').setScale(0.01);
                 bird.depth = 1;
                 
-                //fix code so that sound plays automatically
+                //audio: just need to interact with screen to play
                 let Berkeley = this.sound.add('Berkeley', {loop: false, volume: 0.5});
                 let Ball = this.sound.add('Ball');
-                //play audio when bird moves onto screen
-                //this.tweens.add({
-                //    targets: Berkeley,
-                //    duration:2500,
-                //    x: 200,
-                //    y: 140,
-                //    ease: 'Power1',
-                //    delay: 1000,
-                //    onComplete: () => {Berkeley.setScale}
-                //})
 
                 this.tweens.add({
                     targets: texta,
@@ -317,13 +293,6 @@
             }
 
         }
-
-        //class Outro extends Phaser.Scene{
-        //    constructor() {
-        //        super('outro');
-        //    }
-
-        //}
 
         new Phaser.Game({
            width: 640,
