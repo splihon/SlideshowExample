@@ -3,7 +3,7 @@ Example of publishing a slideshow cinematic based on Phaser
 
 Key requirments for this assignment:
 - **3+ scences**: 3 scenecs were created following the intro scene
-- **2+ audio assets**: the 2 audio assets were recorded myself and located on the 4th scene, where you have to interacte with the scene in order to hear audio assets. And should automatically play audio after you clicked the previous scene in order to transition to the storyintro scene.
+- **2+ audio assets**: The 2 audio assets were recorded myself and located on the 4th scene, where you have to interact with the scene in order to hear audio assets. So, should automatically play audio since must click on the previous scene in order to transition to the storyintro scene.
 - **2+ image assets**: 5 image assets were used in this cinematic slideshow. The first one is taken of my dog and edited by me using photo room, to add the orange circle and gray box around it. The other three images while not taken myself are all edited by by cropping, stretching, and or given a filter over the image.
 The first image can be found on the Logo scene, the second on the Homepage scene, and the last three images are located on the Storyintro scene.
 - **2+ geometric shapes**: For my geometric shapes I created two circles and different colors, with one located on the Logo scene and the second on the Homepage scene.
