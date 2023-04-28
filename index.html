@@ -14,7 +14,7 @@
             create() {
                 this.add.text(10,10,"Introduction Loading. . .");
                 this.add.text(30,30,"Click to Begin.");
-                this.input.on('pointerdown', () => this.scene.start('Logo'));
+                this.input.on('pointerdown', () => this.scene.start('logo'));
             }
 
         }
@@ -99,7 +99,8 @@
                 this.time.delayedCall (2500, () => {
                     this.cameras.main.fadeOut(2000, 0, 0, 0); //not working (screen presented as black) [numbers are currently for red/change to black]
                 });
-                this.input.on('pointerdown', () => this.scene.start('Homepage'));
+                this.input.on('pointerdown', () => this.scene.start('homepage'));
+
                 };
            }
             
@@ -160,7 +161,7 @@
                 //let forest = this.add.image(520,240, 'forest').setScale(0.5);
                 //forest.depth = 1;
 
-                this.input.on('pointerdown', () => this.scene.start('Storyintro'));
+                this.input.on('pointerdown', () => this.scene.start('storyintro'));
             }
 
         }
@@ -308,23 +309,23 @@
 
                 bird.depth = 1;
                 ball.depth = 2;
-                this.input.on('pointerdown', () => this.scene.start('Outro'));
+                this.input.on('pointerdown', () => this.scene.start('intro'));
 
             }
 
         }
 
-        class Outro extends Phaser.Scene{
-            constructor() {
-                super('outro');
-            }
+        //class Outro extends Phaser.Scene{
+        //    constructor() {
+        //        super('outro');
+        //    }
 
-        }
+        //}
 
         new Phaser.Game({
            width: 640,
            height: 480,
-           scene: [Storyintro, Intro, Logo, Homepage, Outro],
+           scene: [Intro, Logo, Homepage, Storyintro],
         });
 
     </script>
